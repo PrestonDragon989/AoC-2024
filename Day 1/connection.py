@@ -1,3 +1,8 @@
+"""
+This is the file that houses the ID Connection class, for linking two IDs into a simple type.
+"""
+
+
 class IDConnection:
     def __init__(self, id_1: int, id_2: int) -> None:
         """
@@ -13,12 +18,22 @@ class IDConnection:
 
     @property
     def difference(self) -> int:
+        """
+        The difference property between the two given IDs. |ID 1 - ID 2|
+        :return: The absolute difference between the 2 IDs.
+        """
         return self._difference
 
     @property
     def id_1(self) -> int:
+        """
+        The first given ID        :return:  as an integer
+        """
         return self._id_1
 
     @property
     def id_2(self) -> int:
+        """
+        The second given ID        :return:  as an integer
+        """
         return self._id_2
