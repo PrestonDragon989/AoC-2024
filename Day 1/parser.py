@@ -13,8 +13,8 @@ class InputParser:
         those parsed lists.
         :return: Return the two parsed lists of IDs.
         """
-        list_1 = []
-        list_2 = []
+        list_1: list[int] = []
+        list_2: list[int] = []
 
         with open(self._file_path, "r") as f:
             for line in f.readlines():

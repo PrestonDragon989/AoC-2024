@@ -10,8 +10,8 @@ def main() -> None:
     Gets both parsed lists, then sorts both lists (smallest to biggest)
 
     Part 1:
-        Goes through left & right lists, and then adds the connected points to a id connections list to easily print out
-        and control the data in a custom class.
+        Goes through left & right lists, and then adds the connected points to an id connections list to easily
+        print out and control the data in a custom class.
 
     Part 2:
         Iterate through the left list, and multiply it by the amount of times that number appears in the right list,
@@ -23,7 +23,7 @@ def main() -> None:
     right_location_ids.sort()
 
     # Part 1
-    id_connections = []
+    id_connections: list[IDConnection] = []
     for i in range(len(left_location_ids)):
         id_connections.append(IDConnection(left_location_ids[i], right_location_ids[i]))
 
@@ -35,10 +35,10 @@ def main() -> None:
     # Entering part 2
     print("\n|\n|\n| PART 2\n|\n|\n")
 
-    total = 0
+    total: int = 0
     for i in range(len(left_location_ids)):
         # Number of left list * amount of times number appears in right list
-        result = left_location_ids[i] * right_location_ids.count(left_location_ids[i])
+        result: int = left_location_ids[i] * right_location_ids.count(left_location_ids[i])
         total += result
         print(f"{i + 1}: {left_location_ids[i]} * {right_location_ids.count(left_location_ids[i])} = {result}")
 
