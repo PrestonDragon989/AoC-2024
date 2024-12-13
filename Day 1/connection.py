@@ -1,0 +1,24 @@
+class IDConnection:
+    def __init__(self, id_1: int, id_2: int) -> None:
+        """
+        A base class for the ID Location class. This was made to streamline the connection between two ID points for
+        the AoC day 1 problem.
+        :param id_1: An integer for ID 1
+        :param id_2: An integer for ID 2
+        """
+        self._id_1: int = id_1
+        self._id_2: int = id_2
+
+        self._difference: int = abs(id_1 - id_2)
+
+    @property
+    def difference(self) -> int:
+        return self._difference
+
+    @property
+    def id_1(self) -> int:
+        return self._id_1
+
+    @property
+    def id_2(self) -> int:
+        return self._id_2
