@@ -5,6 +5,28 @@ URL: https://adventofcode.com/2024/day/2#part2
 from parser import InputParser
 
 
+def report_is_valid(report: list[int]) -> bool:
+    """
+    Function to check if a report is valid. It checks for ascending/descending continuity, and making sure the distance
+    between a number & it's neighbour is at least 1, but no more than 3. (1 <= Distance <= 3)
+    @param report: A list of integers (The report)
+    @return: Whether a report is safe or not in a boolean value.
+    """
+    safe: bool = True
+    is_ascending: bool = report[0] - report[1] > 0
+    for num in range(len(report) - 1):
+        distance: int = report[num] - report[num + 1]  # Distance between index & neighbour index
+        if (is_ascending and distance > 0) or (not is_ascending and distance < 0):  # Ascend/Descend continuity
+            safe = 1 <= abs(distance) <= 3
+        else:
+            safe = False
+
+        if not safe:
+            break
+
+    return safe
+
+
 def main() -> None:
     """
     Gets reports from the input (input.txt) file, parsed.
@@ -25,19 +47,7 @@ def main() -> None:
     # Part 1
     is_safe: list[bool] = []
     for report in reports:
-        safe: bool = True
-        is_ascending: bool = report[0] - report[1] > 0
-        for num in range(len(report) - 1):
-            distance: int = report[num] - report[num + 1]  # Distance between index & neighbour index
-            if (is_ascending and distance > 0) or (not is_ascending and distance < 0):  # Ascend/Descend continuity
-                safe = 1 <= abs(distance) <= 3
-            else:
-                safe = False
-
-            if not safe:
-                break
-
-        is_safe.append(safe)
+        is_safe.append(report_is_valid(report))
 
     total_safe_reports = is_safe.count(True)
 
@@ -59,17 +69,7 @@ def main() -> None:
             dampened_report: list[int] = report.copy()
             dampened_report.pop(i)
 
-            safe: bool = True
-            is_ascending: bool = dampened_report[0] - dampened_report[1] > 0
-            for num in range(len(dampened_report) - 1):
-                distance: int = dampened_report[num] - dampened_report[num + 1]  # Distance between i & neighbour i
-                if (is_ascending and distance > 0) or (not is_ascending and distance < 0):  # Ascend/Descend continuity
-                    safe = 1 <= abs(distance) <= 3
-                else:
-                    safe = False
-
-                if not safe:
-                    break
+            safe: bool = report_is_valid(dampened_report)
 
             if safe:
                 dampened_safe = True
