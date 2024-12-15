@@ -5,6 +5,12 @@ from utils import Utils
 
 
 class WordSearchGrid:
+    """
+    Neighbour Offsets: Used for part 1 when scanning all the letters adjacent to X, and the used as trajectory/slope
+    X Offsets: Used in part 2 to see all nearby letters, and if they equal the correct things.
+    Word Looked For: This is the word that is being looked for in the word search (For Part 1)
+    Letter Tracker Template: A simple template, made to be copied, that holds all the letters of the looked for word.
+    """
     NEIGHBOUR_OFFSETS: list[tuple] = [
         (-1, 1),  (0, 1),  (1, 1),
         (-1, 0),  (0, 0),  (1, 0),
@@ -12,8 +18,8 @@ class WordSearchGrid:
     ]
 
     X_OFFSETS: list[tuple] = {
-        (1, -1),  (1, 1),
-        (-1, -1), (-1, 1)
+        (1,  -1),  (1,  1),
+        (-1, -1),  (-1, 1)
     }
 
     WORD_LOOKED_FOR = "XMAS"

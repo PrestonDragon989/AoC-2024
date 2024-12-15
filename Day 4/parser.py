@@ -13,4 +13,4 @@ class InputParser:
         @return: The lines in the word search input. (the given file)
         """
         with open(self._file_name, "r") as f:
-            return f.readlines()
+            return list(map(lambda line: line.replace("\n", ""), f.readlines()))
